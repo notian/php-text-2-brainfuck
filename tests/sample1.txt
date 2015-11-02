@@ -1,0 +1,40 @@
+                              ..... ..
+                          ..::XXX XXXXX:...
+                        XXXXXXXXXXXXXXXXXXXXX::
+                     XXXXX:XXXXXXX:XXXXXXX:XXXXX::
+                    ..:IXX::XXXXXX:XXXX::.:':XXXX::
+                  ..::::XX:XXXXXX:XXXX:'::':XXXXX::
+                  ...:X'.'XXXXXXXXX.XXXXXXXXXXXX'XXX:
+                 ....:X.:XXXXXXXXXXXXXXXXXXXXXX:'XXXX
+                 ....'X.XXXXXXXXXXXXXXXXX''''' :XXXXXX
+                 ...:::....'''''''''''''       :XXXXXXX
+                 :..::.....                    :'XXXXX
+                  .:::....                     .:XXXXX
+                   ::''''                      .:XXXXX
+                   .      ....,,      ......    :XXXXX
+                    .::'   XXX   ::'   ''':  .XXXX:
+                 :.:   :::'MM'''X    .:'MM '.    'X''.
+                 ::'     I:..:.:X     .'''.'     .::'
+                 ::XI          XI                :::
+                  :XX         XI                .::''
+                  :X' .:.     /X.              .:::
+                  '''....    /XXX.:XX.         ...:
+                   ':....    '::''            ...:
+                    ':...                      ...
+                     :....  :..:II:II:..:     ...
+                     ':....  ::.              ..:::
+                      ':...   '''''''         .::::
+                       .:...               . ..::::
+                   ....:::.:...         .:::::'.XXXX::::....
+          .....:::XXXXXXXX::::::......:::::'   .XXXXXXXIMMM::
+     .::XXXXXXXXXXXXXXXXXX:::::::::::::::'    .XXXXXXXXXMMMMMMM:
+   .XXXXXXXXXXXXXXXXXXXXXX'::::::::::::'   .'.:XXXXXXXX:XXXXXXXXXX
+  .XXXXXXXXXXXXXXXXXXXXXXX '::::::::::'  .' .XXXXXXXXXX:MMMMMMMMMMM
+ .XXXXXXXXXXXXXXXXXXXXXXXX  ':::::::' .'   .XXXXXXXXXXX:MMMMMMMMMMM
+.XXXXXXXXXXXXXXXXXXXXXXXXX   ':::::'.'    .XXXXXXXXXXXX:MMMMMMMMMMM
+XXXXXXXXXXXXXXXXXXXXXXXXXX   .'WWWW.     .XXXXXXXXXXXXXX'MMMMMMMMMM
+XXXXXXXXXXXXXXXXXXXXXXXXX.  .:WWWWWW    .XXXXXXXXXXXXXXX:MMMMMMMMMM
+XXXXXXXXXXXXXXXXXXXXXXXXX.  .:WWWW' '   .XXXXXXXXXXXXXXX:MMMMMMMMMM
+XXXXXXXXXXXXXXXXXXXXXXXXX  : 'WW'    '  XXXXXXXXXXXXXXXXX.MMMMMMMMM
+XXXXXXXXXXXXXXXXXXXXXXXX' :.WWWW'     .XXXXXXXXXXXXXXXXX'MMMMMMMMMM
+XXXXXXXXXXXXXXXXXXXXXXXX...WWWWWW....XXXXXXXXXXXXXXXXXXXXMMMMMMMMMM
