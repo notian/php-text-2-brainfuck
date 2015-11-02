@@ -26,23 +26,33 @@ $hasNL = ( false !== strpos( $str, "\n" ) );
 $hasSpace = ( false !== strpos( $str, ' ') );
 $prefix = '';
 $pValue = 0;
+$first_chr = ord( $str[0] );
 if( $hasNL && $hasSpace ){
-	$prefix = '++++++++[>+>++++>++++++++<<<-]>++>>';
+	$factor = 8;
+	$first = floor( $first_chr / $factor );
+	var_dump( $first_chr, $first, $factor );
+	$prefix = r('+', $factor).'[>+>++++>'.r('+', $first).'<<<-]>++>>';
 	$special[32] = '<.>';
 	$special[10] = '<<.>>';
-	$pValue = 64;
+	$pValue = $n * $factor;
 }
 if( !$hasNL && $hasSpace ){
-	$prefix = '++++++++[>++++>++++++++<<-]>>';
+	$factor = 8;
+	$first = floor( $first_chr / $factor );
+	var_dump( $first_chr, $first, $factor );
+	$prefix = r('+',$factor).'[>++++>'.r('+', $first).'<<-]>>';
 	$special[32] = '<.>';
 	$special[10] = '';
-	$pValue = 64;
+	$pValue = $first * $factor;
 }
 if( $hasNL && !$hasSpace ){
-	$prefix = '+++++[>++>+++++++++++++<<-]>';
+	$factor = 5;
+	$first = floor( $first_chr / $factor );
+	var_dump( $first, $factor );
+	$prefix = r('+',$factor).'[>++>'.r('+', $first).'<<-]>>';
 	$special[10] = '<.>';
 	$special[32] = '';
-	$pValue = 65;
+	$pValue = $first * $factor;
 }
 
 
@@ -53,12 +63,13 @@ for( $i = 0; $i < $l; $i++ ){
 	if( isset( $special[$chr] ) ){
 		$specialRepeat = 0;
 		$j = $i+1;
-		while( $str[$i] == $str[$j++] ){
+		while( isset($str[$j]) && $str[$i] == $str[$j] ){
 			$specialRepeat++;
+			$j++;
 		}
 		if( $specialRepeat ){
 			$i += $specialRepeat;
-			echo str_replace('.', printX('.', $specialRepeat, true ), $special[$chr] );
+			echo str_replace('.', r('.', $specialRepeat ), $special[$chr] );
 		}else{
 			echo $special[$chr];
 		}
@@ -89,9 +100,9 @@ for( $i = 0; $i < $l; $i++ ){
 	
 	if( $div ){
 		$num = $diff / $div;
-		echo '>'.printx( '+', $num, 1 ).'[<'.printx( $mChar, $div, 1 ).'>-]<';
+		echo '>'.r( '+', $num ).'[<'.r( $mChar, $div ).'>-]<';
 	} elseif( $diff ) {
-		printX( $mChar, $diff );	
+		echo r( $mChar, $diff );	
 	}
 	
 	echo '.';
@@ -104,16 +115,24 @@ echo wordwrap( $buff, 80, "\n", true );
 echo "\n\n========================================";
 echo "========================================\n\n";
 
-function printX($chr, $n, $return = false ){
-	$rVal = implode('', array_fill( 0, $n, $chr ));
-	if($return) return $rVal;
-	echo $rVal;
+function r($s, $n){
+	return str_repeat($s, $n);
 }
 
 function getFactor($n){
-	$x = 5;
-	while( $x++ < 15 ){
-		if( $n % $x == 0 && $n/$x > 1) return $x;
+	$root = sqrt( $n );
+	if( $root >= 5 && round($root) == $root ){
+		return $root;
+	}
+	$x = $n/2;
+	$candidates = array();  // Numbers that may fit.
+	for($i = 5; $i < $x; $i++) {
+		if ($n % $i == 0) 
+			$candidates[$i] = $i - ($n / $i); // difference
+	}
+	if( $candidates ){
+		asort( $candidates );	
+		return array_shift( array_keys( $candidates ) );
 	}
 	return false;
 }
