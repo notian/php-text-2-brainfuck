@@ -52,7 +52,7 @@ for( $i = 0; $i < $l; $i++ ){
 	}
 	
 	$diff = $chr - $pValue;
-	
+	$div = false;
 	$pValue = $chr;
 	$mChar = '+';
 	if($diff < 0){
@@ -60,24 +60,21 @@ for( $i = 0; $i < $l; $i++ ){
 		$diff = $diff * -1;
 	}
 	
-	if($diff > 5 ){
-		while($diff > 5){
-			$div = getFactor( $diff );
-			if( $div ) {
-				break;
-			}
-			echo $mChar;
-			--$diff;
+
+	while($diff > 5){
+		$div = getFactor( $diff );
+		if( $div ) {
+			break;
 		}
-		
-		if( $div ){
-			$num = $diff / $div;
-			echo '>'.printx( '+', $num, 1 ).'[<'.printx( $mChar, $div, 1 ).'>-]<';
-		} elseif( $diff ) {
-			printX( $mChar, $diff );	
-		}
-	} else {
-		printX( $mChar, $diff );
+		echo $mChar;
+		--$diff;
+	}
+	
+	if( $div ){
+		$num = $diff / $div;
+		echo '>'.printx( '+', $num, 1 ).'[<'.printx( $mChar, $div, 1 ).'>-]<';
+	} elseif( $diff ) {
+		printX( $mChar, $diff );	
 	}
 	
 	echo '.';
