@@ -13,6 +13,7 @@ $str = ($stdin) ?: $str;
 echo $str;
 echo "\n========================================\n\n";
 $str = str_replace( "\r\n", "\n", $str );
+$str = str_replace( "\r", "\n", $str );
 $l = strlen( $str );
 
 $special = array();
@@ -61,7 +62,6 @@ for( $i = 0; $i < $l; $i++ ){
 		$mChar = '-';
 		$diff = $diff * -1;
 	}
-	
 
 	while($diff > 5){
 		$div = getFactor( $diff );
