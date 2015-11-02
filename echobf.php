@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 $cmd = getopt('f:v', array('self', 'file:'));
-$stdin = stream_get_contents(STDIN);
+$stdin = implide('', file(STDIN));
 $verbose = (isset($cmd['v']));
 $str = 'Hello World';
 $str = (isset($argv[1])) ? implode( ' ', array_slice($argv, 1) ) : $str;
@@ -46,7 +46,16 @@ echo $prefix;
 for( $i = 0; $i < $l; $i++ ){
 	$chr = ord( $str[$i] );
 	if( isset( $special[$chr] ) ){
-		echo $special[$chr];
+		$specialRepeat = 0;
+		while( $str[$i] == $str[++$i] ){
+			$specialRepeat++;
+		}
+		if( $specialRepeat ){
+			$i += $specialRepeat;
+			echo str_replace('.', printX('.', $specialRepeat, true ), $special[$chr] );
+		}else{
+			echo $special[$chr];
+		}
 		continue;
 	}
 	if( $chr == $pValue ){
