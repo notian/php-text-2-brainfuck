@@ -15,14 +15,12 @@ if($str == NULL){
 	$str = ($stdin) ?: $str;
 }
 
-
-echo $str;
-echo "\n========================================";
-echo "========================================\n\n";
 $str = str_replace( "\r\n", "\n", $str );
 $str = str_replace( "\r", "\n", $str );
 $l = strlen( $str );
-
+echo $str;
+echo "\n========================================";
+echo "========================================\n\n";
 $special = array();
 $hasNL = ( false !== strpos( $str, "\n" ) );
 $hasSpace = ( false !== strpos( $str, ' ') );
@@ -54,7 +52,8 @@ for( $i = 0; $i < $l; $i++ ){
 	$chr = ord( $str[$i] );
 	if( isset( $special[$chr] ) ){
 		$specialRepeat = 0;
-		while( $str[$i] == $str[++$i] ){
+		$j = $i+1;
+		while( $str[$i] == $str[$j++] ){
 			$specialRepeat++;
 		}
 		if( $specialRepeat ){
