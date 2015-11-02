@@ -1,10 +1,12 @@
 #!/usr/bin/php
 <?php
 $cmd = getopt('f:v', array('self', 'file:'));
-$stdIn = '';
+/*
+$stdin = '';
 while (false !== ($line = fgets(STDIN))) {
-  echo $stdIn .= $line;
+  echo $stdin .= $line;
 }
+*/
 $verbose = (isset($cmd['v']));
 $str = 'Hello World';
 $str = (isset($argv[1])) ? implode( ' ', array_slice($argv, 1) ) : $str;
@@ -14,7 +16,8 @@ $str = ($file) ? file_get_contents($file) : $str;
 $str = ($stdin) ?: $str;
 
 echo $str;
-echo "\n========================================\n\n";
+echo "\n========================================";
+echo "========================================\n\n";
 $str = str_replace( "\r\n", "\n", $str );
 $str = str_replace( "\r", "\n", $str );
 $l = strlen( $str );
@@ -97,8 +100,9 @@ for( $i = 0; $i < $l; $i++ ){
 $buff = ob_get_contents();;
 ob_end_clean();
 
-echo wordwrap( $buff, 40, "\n", true );
-echo "\n\n========================================\n\n";
+echo wordwrap( $buff, 80, "\n", true );
+echo "\n\n========================================";
+echo "========================================\n\n";
 
 function printX($chr, $n, $return = false ){
 	$rVal = implode('', array_fill( 0, $n, $chr ));
