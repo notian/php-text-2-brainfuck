@@ -30,7 +30,6 @@ $first_chr = ord( $str[0] );
 if( $hasNL && $hasSpace ){
 	$factor = 8;
 	$first = floor( $first_chr / $factor );
-	var_dump( $first_chr, $first, $factor );
 	$prefix = r('+', $factor).'[>+>++++>'.r('+', $first).'<<<-]>++>>';
 	$special[32] = '<.>';
 	$special[10] = '<<.>>';
@@ -39,7 +38,6 @@ if( $hasNL && $hasSpace ){
 if( !$hasNL && $hasSpace ){
 	$factor = 8;
 	$first = floor( $first_chr / $factor );
-	var_dump( $first_chr, $first, $factor );
 	$prefix = r('+',$factor).'[>++++>'.r('+', $first).'<<-]>>';
 	$special[32] = '<.>';
 	$special[10] = '';
@@ -48,7 +46,6 @@ if( !$hasNL && $hasSpace ){
 if( $hasNL && !$hasSpace ){
 	$factor = 5;
 	$first = floor( $first_chr / $factor );
-	var_dump( $first, $factor );
 	$prefix = r('+',$factor).'[>++>'.r('+', $first).'<<-]>>';
 	$special[10] = '<.>';
 	$special[32] = '';
@@ -132,7 +129,8 @@ function getFactor($n){
 	}
 	if( $candidates ){
 		asort( $candidates );	
-		return array_shift( array_keys( $candidates ) );
+		$keys = array_keys( $candidates );
+		return array_shift( $keys );
 	}
 	return false;
 }
