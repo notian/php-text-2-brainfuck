@@ -27,22 +27,22 @@ $hasSpace = ( false !== strpos( $str, ' ') );
 $prefix = '';
 $pValue = 0;
 if( $hasNL && $hasSpace ){
-	$prefix = '+++++[>++>++++++>+++++++++<<<-]>>++>';
+	$prefix = '++++++++[>+>++++>++++++++<<<-]>++>>';
 	$special[32] = '<.>';
 	$special[10] = '<<.>>';
-	$pValue = 45;
+	$pValue = 64;
 }
 if( !$hasNL && $hasSpace ){
-	$prefix = '+++++[>++++++>+++++++++<<-]>++>';
+	$prefix = '++++++++[>++++>++++++++<<-]>>';
 	$special[32] = '<.>';
 	$special[10] = '';
-	$pValue = 45;
+	$pValue = 64;
 }
 if( $hasNL && !$hasSpace ){
-	$prefix = '++[>+++++>+++++++++<<-]>';
+	$prefix = '+++++[>++>+++++++++++++<<-]>';
 	$special[10] = '<.>';
 	$special[32] = '';
-	$pValue = 45;
+	$pValue = 65;
 }
 
 
