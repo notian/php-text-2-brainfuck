@@ -30,7 +30,7 @@ $factor = 0;
 $i = 0;
 do{
 	$first_chr = ord( $str[$i++] );
-} while( !in_array($first_chr, array( 10, 32));
+} while( !in_array($first_chr, array( 10, 32)));
 
 if( $hasNL || $hasSpace ){
 	if( $hasNL && $hasSpace ){
