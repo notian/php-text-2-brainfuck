@@ -33,6 +33,10 @@ do{
 	$i++;
 } while( in_array($first_chr, array( 10, 32)));
 
+/*
+ Create quick lookups for spaces and newlines, other 'out of range' characters
+ could be added, but adds to overall complexity.
+*/
 if( $hasNL || $hasSpace ){
 	if( $hasNL && $hasSpace ){
 		$factor = 8;
@@ -59,6 +63,21 @@ if( $hasNL || $hasSpace ){
 
 $first = floor( $first_chr / $factor );
 $pValue = $first * $factor;
+
+/*
+Walk over string and output using the following
+Cell A: The printer
+Cell B: A multiplier (set to N, then do N*op on the printer
+
+Get difference between printer and next char, if > 5, 
+try and find a multiplication, if none found, do simple +/- ops.
+
+Possible future optimization:
+Find highest and lowest chars, and use 2 printers, and find the nearest neighbor.
+This would have the overhead of moving >> or << to the correct printer, as well as 
+adding additional moves to print special chars. Likely non-optimal for shorter, 
+less complex strings.
+*/
 
 ob_start();
 printf( $prefixf, r('+', $factor), r('+',$first));
@@ -128,7 +147,7 @@ function getFactor($n){
 	if( $root >= 5 && round($root) == $root ){
 		return $root;
 	}
-	$x = $n/2;
+	$x = $n/5;
 	$candidates = array();  // Numbers that may fit.
 	for($i = 5; $i < $x; $i++) {
 		if ($n % $i == 0) 
