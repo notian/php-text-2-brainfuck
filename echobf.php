@@ -147,10 +147,10 @@ function getFactor($n){
 	if( $root >= 5 && round($root) == $root ){
 		return $root;
 	}
-	$x = $n/5;
+	$x = ( $n/3 < 15 ) ? $n/3 : 15;
 	$candidates = array();  // Numbers that may fit.
-	for($i = 5; $i < $x; $i++) {
-		if ($n % $i == 0) 
+	for($i = 5; $i <= $x; $i++) {
+		if ($n % $i == 0 ) 
 			$candidates[$i] = $i - ($n / $i); // difference
 	}
 	if( $candidates ){
