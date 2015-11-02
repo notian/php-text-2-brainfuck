@@ -1,12 +1,14 @@
 #!/usr/bin/php
 <?php
 $cmd = getopt('f:v', array('self', 'file:'));
+$stdin = stream_get_contents(STDIN);
 $verbose = (isset($cmd['v']));
 $str = 'Hello World';
 $str = (isset($argv[1])) ? implode( ' ', array_slice($argv, 1) ) : $str;
 $str = isset( $cmd['self'] ) ? file_get_contents(__FILE__) :$str;
 $file = (isset($cmd['f'])) ? $cmd['f']: (isset($cmd['file'])) ? $cmd['file']: false;
-$str = ($file) ? file_get_contents($file):$str;
+$str = ($file) ? file_get_contents($file) : $str;
+$str = ($stdin) ?: $str;
 
 echo $str;
 echo "\n========================================\n\n";
