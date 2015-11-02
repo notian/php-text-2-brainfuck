@@ -1,7 +1,10 @@
 #!/usr/bin/php
 <?php
 $cmd = getopt('f:v', array('self', 'file:'));
-$stdin = implide('', file(STDIN));
+$stdIn = '';
+while (false !== ($line = fgets(STDIN))) {
+  echo $stdIn .= $line;
+}
 $verbose = (isset($cmd['v']));
 $str = 'Hello World';
 $str = (isset($argv[1])) ? implode( ' ', array_slice($argv, 1) ) : $str;
