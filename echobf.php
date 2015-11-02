@@ -25,36 +25,42 @@ $special = array();
 $hasNL = ( false !== strpos( $str, "\n" ) );
 $hasSpace = ( false !== strpos( $str, ' ') );
 $prefix = '';
-$pValue = 0;
-$first_chr = ord( $str[0] );
-if( $hasNL && $hasSpace ){
-	$factor = 8;
-	$first = floor( $first_chr / $factor );
-	$prefix = r('+', $factor).'[>+>++++>'.r('+', $first).'<<<-]>++>>';
-	$special[32] = '<.>';
-	$special[10] = '<<.>>';
-	$pValue = $n * $factor;
-}
-if( !$hasNL && $hasSpace ){
-	$factor = 8;
-	$first = floor( $first_chr / $factor );
-	$prefix = r('+',$factor).'[>++++>'.r('+', $first).'<<-]>>';
-	$special[32] = '<.>';
-	$special[10] = '';
-	$pValue = $first * $factor;
-}
-if( $hasNL && !$hasSpace ){
-	$factor = 5;
-	$first = floor( $first_chr / $factor );
-	$prefix = r('+',$factor).'[>++>'.r('+', $first).'<<-]>>';
-	$special[10] = '<.>';
-	$special[32] = '';
-	$pValue = $first * $factor;
+$first = 0;
+$factor = 0;
+$i = 0;
+do{
+	$first_chr = ord( $str[$i++] );
+} while( !in_array($first_chr, array( 10, 32));
+
+if( $hasNL || $hasSpace ){
+	if( $hasNL && $hasSpace ){
+		$factor = 8;
+		$prefixf = '%s[>+>++++>%s<<<-]>++>>';
+		$special[32] = '<.>';
+		$special[10] = '<<.>>';
+	}
+	if( !$hasNL && $hasSpace ){
+		$factor = 8;
+		$prefixf = '%s[>++++>%s<<-]>>';
+		$special[32] = '<.>';
+		$special[10] = '';
+	}
+	if( $hasNL && !$hasSpace ){
+		$factor = 5;
+		$prefixf = '%s[>++>%s<<-]>>';
+		$special[10] = '<.>';
+		$special[32] = '';
+	}
+} else {
+	$factor = 9;
+	$prefixf = '%s[>%s<-]>';
 }
 
+$first = floor( $first_chr / $factor );
+$pValue = $first * $factor;
 
 ob_start();
-echo $prefix;
+printf( $prefixf, r('+', $factor), r('+',$first));
 for( $i = 0; $i < $l; $i++ ){
 	$chr = ord( $str[$i] );
 	if( isset( $special[$chr] ) ){
