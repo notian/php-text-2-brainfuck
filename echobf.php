@@ -10,7 +10,7 @@ $str = ($file) ? file_get_contents($file) : $str;
 if($str == NULL){
 	$stdin = '';
 	while (false !== ($line = fgets(STDIN))) {
-		echo $stdin .= $line;
+		$stdin .= $line;
 	}
 	$str = ($stdin) ?: $str;
 }
