@@ -2,12 +2,12 @@
 <?php
 $cmd = getopt('f:v', array('self', 'file:'));
 $verbose = (isset($cmd['v']));
-$str = 'Hello World';
+$str = NULL;
 $str = (isset($argv[1])) ? implode( ' ', array_slice($argv, 1) ) : $str;
 $str = isset( $cmd['self'] ) ? file_get_contents(__FILE__) :$str;
 $file = (isset($cmd['f'])) ? $cmd['f']: (isset($cmd['file'])) ? $cmd['file']: false;
 $str = ($file) ? file_get_contents($file) : $str;
-if(!$str){
+if($str == NULL){
 	$stdin = '';
 	while (false !== ($line = fgets(STDIN))) {
 		echo $stdin .= $line;
