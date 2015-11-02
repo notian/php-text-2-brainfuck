@@ -29,8 +29,9 @@ $first = 0;
 $factor = 0;
 $i = 0;
 do{
-	$first_chr = ord( $str[$i++] );
-} while( !in_array($first_chr, array( 10, 32)));
+	$first_chr = ord( $str[$i] );
+	$i++;
+} while( in_array($first_chr, array( 10, 32)));
 
 if( $hasNL || $hasSpace ){
 	if( $hasNL && $hasSpace ){
